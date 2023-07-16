@@ -8,3 +8,5 @@ Description: Miscellaneous collection of functions
 License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
+URL: https://github.com/parmsam/psam
+BugReports: https://github.com/parmsam/psam/issues
