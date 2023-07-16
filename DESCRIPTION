@@ -1,0 +1,10 @@
+Package: psam
+Type: Package
+Title: psam
+Version: 0.1.0
+Author: Sam Parmar
+Maintainer: P
+Description: Miscellaneous collection of functions
+License: MIT + file LICENSE
+Encoding: UTF-8
+LazyData: true
