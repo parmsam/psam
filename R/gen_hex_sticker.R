@@ -6,8 +6,10 @@
 #' @param git_name github repo name to include in hex sticker, Default: NULL
 #' @param ft main font, Default: 'bangers'
 #' @param ft1 annotation font, Default: 'rob'
-#' @param txt_main package name text color, Default: 'black'
-#' @param txt_repo repo text color, Default: 'black'
+#' @param txt_main_color package name text color, Default: 'black'
+#' @param txt_main_size package name text size, Default: 55
+#' @param txt_repo_color repo text color, Default: 'black'
+#' @param txt_repo_size repo text size, Default: 25
 #' @return string with path to image file
 #' @details function based on based on http://gradientdescending.com/how-to-generate-a-hex-sticker-with-openai-and-cropcircles/
 #' @examples
@@ -22,8 +24,8 @@
 #'      file_name,
 #'      pkg_name,
 #'      git_name,
-#'      txt_main = "white",
-#'      txt_repo = "black"
+#'      txt_main_color = "white",
+#'      txt_repo_color = "black"
 #'   )
 #'  }
 #' }
@@ -49,8 +51,10 @@ gen_hex_sticker <- function(
     git_name = NULL,
     ft = "bangers",
     ft1 = "rob",
-    txt_main = "black",
-    txt_repo = "black"
+    txt_main_color = "black",
+    txt_main_size = 55,
+    txt_repo_color = "black",
+    txt_repo_size = 25
   ) {
   sysfonts::font_add_google("Bangers", "bangers")
   sysfonts::font_add_google("Roboto", "rob")
@@ -67,7 +71,7 @@ gen_hex_sticker <- function(
       ggplot2::aes(0.5, 0.5, path = img_cropped)
       ) +
     ggplot2::annotate("text", x = 0.5, y = 0.25, label = pkg_name,
-                     family = ft, size = 55, colour = txt_main,
+                     family = ft, size = txt_main_size, colour = txt_main_color,
                      lineheight = 0.25,
                      angle = 30, hjust = 0, fontface = "bold") +
     ggplot2::xlim(0, 1) +
@@ -78,8 +82,8 @@ gen_hex_sticker <- function(
   if(!is.null(git_name)){
     g <- g +
       ggplot2::annotate("text", x=0.5, y = 0.017, family = ft1,
-        size = 15, angle = 30,
-        colour = txt_repo, hjust = 0,
+        size = txt_repo_size, angle = 30,
+        colour = txt_repo_color, hjust = 0,
         label = git_name
         )
   }
