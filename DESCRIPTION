@@ -4,9 +4,12 @@ Title: psam
 Version: 0.1.0
 Author: Sam Parmar
 Maintainer: P
-Description: Miscellaneous collection of functions
+Description: Miscellaneous collection of functions for personal use
 License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
 URL: https://github.com/parmsam/psam
 BugReports: https://github.com/parmsam/psam/issues
+RoxygenNote: 7.2.3
+Imports: 
+    magrittr
