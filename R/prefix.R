@@ -27,6 +27,7 @@ prefix <- function(){
     script_funs$package, script_funs$funs, sep = "::"
   )
 
+
   script_funs <- script_funs %>%
     dplyr::select(funs, suggested_fun) %>%
     unique()

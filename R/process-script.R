@@ -6,7 +6,7 @@
 #' @return a \code{data.frame}
 #' @noRd
 #'
-#' @importFrom stringr stringr::str_split str_locate_all
+#' @importFrom stringr str_split str_locate_all
 #'
 #' @examples
 #' find_position(
@@ -35,7 +35,7 @@ find_position <- function(script, word) {
 #' @return a \code{data.frame}
 #' @noRd
 #'
-#' @importFrom stringr stringr::str_split stringr::str_replace stringr::str_replace_all str_extract_all
+#' @importFrom stringr str_split str_replace str_replace_all str_extract_all
 #'
 #' @examples
 #' extract_words("dat <- data.frame(var1 = letters); head(dat)")
@@ -100,7 +100,7 @@ get_other_occurence <- function(data, fun, numrow, exclude.start) {
   unique(as.matrix(data[, c("start", "end")]))
 }
 
-#' @importFrom stringr stringr::str_replace_all str_detect
+#' @importFrom stringr str_replace_all str_detect
 val_cont <- function(contexts, funs) {
   cont <- stringr::str_replace_all(string = contexts, pattern = "#.*", replacement = "")
   cont <- stringr::str_replace_all(string = cont, pattern = "[[:alnum:]\\._]+[:space:]*<-", replacement = "")
@@ -126,7 +126,7 @@ val_cont <- function(contexts, funs) {
 #' @return modified string
 #' @noRd
 #'
-#' @importFrom stringr stringr::str_split str_count str_c
+#' @importFrom stringr str_split str_count str_c
 #'
 #' @examples
 #'

@@ -3,8 +3,9 @@ Package: psam
 Title: psam
 Version: 0.1.0
 Author: Sam Parmar
+Maintainer: Sam Parmar <yourself@somewhere.net>
 Description: Miscellaneous collection of functions for personal use
-License: MIT + file LICENSE
+License: GPL (>= 3)
 URL: https://github.com/parmsam/psam
 BugReports: https://github.com/parmsam/psam/issues
 Imports: 
