@@ -1,3 +1,11 @@
+#' Add package prefixes to a script
+#'
+#' @export
+#' @importFrom rstudioapi getSourceEditorContext insertText
+#' @importFrom dplyr select
+#' @importFrom stringr str_replace_all
+#' @importFrom glue glue
+#'
 prefix <- function(){
   script <- rstudioapi::getSourceEditorContext()$contents
   if (sum(nchar(script), na.rm = TRUE) == 0) {
@@ -46,5 +54,4 @@ prefix <- function(){
     text = script_,
     id = activ_doc$id
   )
-
 }

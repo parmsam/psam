@@ -11,7 +11,7 @@ unprefix <- function() {
     string = script, replacement = "",
     pattern = "[[:alnum:]\\.]+::(?=[[:alnum:]\\._]+)"
   )
-  # browser()
+
   rstudioapi::insertText(
     location = Map(c, Map(c, seq_along(script), 1), Map(c, seq_along(script), nchar(script) + 1)),
     text = script_,
