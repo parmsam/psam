@@ -7,8 +7,8 @@
 #' @param ft main font, Default: 'bangers'
 #' @param ft1 annotation font, Default: 'rob'
 #' @param txt_main_color package name text color, Default: 'black'
-#' @param txt_main_size package name text size, Default: 55
 #' @param txt_repo_color repo text color, Default: 'black'
+#' @param txt_main_size package name text size, Default: 55
 #' @param txt_repo_size repo text size, Default: 25
 #' @return string with path to image file
 #' @details function based on based on http://gradientdescending.com/how-to-generate-a-hex-sticker-with-openai-and-cropcircles/
@@ -52,8 +52,8 @@ gen_hex_sticker <- function(
     ft = "bangers",
     ft1 = "rob",
     txt_main_color = "black",
-    txt_main_size = 55,
     txt_repo_color = "black",
+    txt_main_size = 55,
     txt_repo_size = 25
   ) {
   sysfonts::font_add_google("Bangers", "bangers")
@@ -62,7 +62,7 @@ gen_hex_sticker <- function(
   showtext::showtext_auto()
   img_cropped <- cropcircles::hex_crop(
     images = ref_image,
-    border_colour = txt,
+    border_colour = txt_main_color,
     border_size = 24
   )
 

@@ -11,8 +11,10 @@ gen_hex_sticker(
   git_name = NULL,
   ft = "bangers",
   ft1 = "rob",
-  txt_main = "black",
-  txt_repo = "black"
+  txt_main_color = "black",
+  txt_repo_color = "black",
+  txt_main_size = 55,
+  txt_repo_size = 25
 )
 }
 \arguments{
@@ -28,9 +30,13 @@ gen_hex_sticker(
 
 \item{ft1}{annotation font, Default: 'rob'}
 
-\item{txt_main}{package name text color, Default: 'black'}
+\item{txt_main_color}{package name text color, Default: 'black'}
 
-\item{txt_repo}{repo text color, Default: 'black'}
+\item{txt_repo_color}{repo text color, Default: 'black'}
+
+\item{txt_main_size}{package name text size, Default: 55}
+
+\item{txt_repo_size}{repo text size, Default: 25}
 }
 \value{
 string with path to image file
@@ -53,8 +59,8 @@ if(interactive()){
      file_name,
      pkg_name,
      git_name,
-     txt_main = "white",
-     txt_repo = "black"
+     txt_main_color = "white",
+     txt_repo_color = "black"
   )
  }
 }
