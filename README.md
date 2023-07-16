@@ -18,3 +18,8 @@ You can install the development version of psam from
 # install.packages("devtools")
 devtools::install_github("parmsam/psam")
 ```
+
+## Credits
+
+- prefix() and unprefix() based on code from [prefixer
+  package](https://github.com/dreamRs/prefixer).
