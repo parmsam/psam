@@ -3,11 +3,12 @@
 #' @param repo_name Github repository name with org or username included
 #' @param branch_name Github repository brach name
 #' @param folder folder to export files, defaults to 'examples' folder
+#' @param filter_pattern regex pattern to filter file list by
 #' @return OUTPUT_DESCRIPTION
 #' @examples
 #' \dontrun{
 #' if(interactive()){
-#'  # get_book_clean_code("tidymodels/TMwR", "main", "examples")
+#'  # get_book_clean_code("tidymodels/TMwR", "main", "examples", "^[01-20]")
 #'  }
 #' }
 #' @seealso
@@ -26,19 +27,23 @@
 get_book_clean_code <- function(
     repo_name,
     branch_name,
-    folder = "examples"){
+    folder = "examples",
+    filter_pattern = ".*"){
   # get file list from repo of interest
-  req <-
-    httr::GET(glue::glue(
+  req <- httr::GET(
+    glue::glue(
       "https://api.github.com/repos/{repo_name}/git/trees/{branch_name}?recursive=1"
-    ))
+    )
+  )
   httr::stop_for_status(req)
-  filelist <-
-    unlist(lapply(content(req)$tree, "[", "path"), use.names = F)
+  filelist <- unlist(
+    lapply(httr::content(req)$tree, "[", "path"),
+    use.names = F
+  )
   # subset to code files
-  rmd_fnames <- filelist %>% stringr::str_subset("^[01-20]")
+  rmd_fnames <- filelist %>% stringr::str_subset(filter_pattern)
   ref_rmds <- glue::glue(
-    "https://raw.githubusercontent.com/{repo_name}/main/{rmd_fnames}"
+    "https://raw.githubusercontent.com/{repo_name}/{branch_name}/{rmd_fnames}"
   )
   out_fnames <- rmd_fnames %>%
     stringr::str_replace_all(".Rmd", ".R")
