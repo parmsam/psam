@@ -47,7 +47,7 @@ prefix <- function(){
 
   script_ <- stringr::str_replace_all(
     script,
-    set_names(replacements, patterns)
+    purrr::set_names(replacements, patterns)
   )
   rstudioapi::insertText(
     location = Map(c, Map(c, seq_along(script), 1), Map(c, seq_along(script), nchar(script) + 1)),

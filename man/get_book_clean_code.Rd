@@ -4,7 +4,12 @@
 \alias{get_book_clean_code}
 \title{Get clean code from book repo}
 \usage{
-get_book_clean_code(repo_name, branch_name, folder = "examples")
+get_book_clean_code(
+  repo_name,
+  branch_name,
+  folder = "examples",
+  filter_pattern = ".*"
+)
 }
 \arguments{
 \item{repo_name}{Github repository name with org or username included}
@@ -12,6 +17,8 @@ get_book_clean_code(repo_name, branch_name, folder = "examples")
 \item{branch_name}{Github repository brach name}
 
 \item{folder}{folder to export files, defaults to 'examples' folder}
+
+\item{filter_pattern}{regex pattern to filter file list by}
 }
 \value{
 OUTPUT_DESCRIPTION
@@ -22,7 +29,7 @@ get_book_clean_code() retrieves clean R code from book repository based on Rmd f
 \examples{
 \dontrun{
 if(interactive()){
- # get_book_clean_code("tidymodels/TMwR", "main", "examples")
+ # get_book_clean_code("tidymodels/TMwR", "main", "examples", "^[01-20]")
  }
 }
 }
