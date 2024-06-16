@@ -63,10 +63,14 @@ url_encode_dir <- function(
   )
 }
 
-url_decode <- function(encoded_url, dir) {
+url_decode <- function(encoded_url, dir = NULL, json = FALSE) {
   url_in <- strsplit(encoded_url, "code=")[[1]][2]
   sl_app <- lzstring::decompressFromEncodedURIComponent(url_in)
   sl_app <- jsonlite::fromJSON(sl_app, simplifyVector = FALSE, simplifyDataFrame = FALSE, simplifyMatrix = FALSE)
+  if (json) {
+    sl_app <- jsonlite::toJSON(sl_app)
+    return(sl_app)
+  }
   if (!is.null(dir)) {
     write_files(sl_app, dir)
   } else {
