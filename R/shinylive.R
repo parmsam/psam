@@ -5,7 +5,6 @@ url_encode_dir <- function(
     hide_header = FALSE,
     exclude = "rsconnect/"
 ) {
-  # check_v8_installed()
 
   stopifnot(fs::dir_exists(dir))
 
@@ -46,9 +45,7 @@ url_encode_dir <- function(
   }
 
   names <- fs::path_rel(files, path_root)
-  # names <- toString(names)
   bundle <- unname(Map(as_file_list, files, names))
-  x <<- bundle
   bundle <- jsonlite::toJSON(bundle, auto_unbox = TRUE, null = "null", na = "null")
   URI <- lzstring::compressToEncodedURIComponent(bundle)
   URI <- gsub("/", "-", URI)
@@ -59,7 +56,6 @@ url_encode_dir <- function(
     mode,
     if (hide_header) "h=0&" else "",
     URI
-    # lzstring_compress_uri(bundle)
   )
 }
 
@@ -79,24 +75,18 @@ url_decode <- function(encoded_url, dir = NULL, json = FALSE) {
 }
 
 write_files <- function(sl_app, dest) {
-  # Create the directory if it doesn't exist
   if (!fs::dir_exists(dest)) {
     fs::dir_create(dest)
   }
-  # Loop over each file in the sl_app
   for (file in sl_app) {
-    # Check if the file is binary
     if ("type" %in% names(file) && file[["type"]] == "binary") {
-      # Write the binary file
       file_content <- base64enc::base64decode(file[["content"]])
       writeBin(file_content, file.path(dest, file[["name"]]))
     } else {
-      # Write the text file
       file_content <- iconv(file[["content"]], "UTF-8", "UTF-8", sub = "")
       writeLines(file_content, file.path(dest, file[["name"]]))
     }
   }
-  # Return the directory
   return(dest)
 }
 
