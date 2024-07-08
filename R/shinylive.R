@@ -1,3 +1,7 @@
+#' Encode Shinylive URL for directory
+#'
+#' @export
+#'
 url_encode_dir <- function(
     dir,
     language = c("auto", "r", "py"),
@@ -59,6 +63,10 @@ url_encode_dir <- function(
   )
 }
 
+#' Decode Shinylive URL into directory
+#'
+#' @export
+#'
 url_decode <- function(encoded_url, dir = NULL, json = FALSE) {
   url_in <- strsplit(encoded_url, "code=")[[1]][2]
   sl_app <- lzstring::decompressFromEncodedURIComponent(url_in)
